@@ -31,7 +31,7 @@ pipeline {
                 always {
                     // Publish JMeter results
                
-                      junit '**/results.jtl'
+                   junit 'results.xml'
                 }
             }
         }
