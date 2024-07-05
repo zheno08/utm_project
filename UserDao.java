@@ -54,16 +54,16 @@ public class UserDao {
       try { 
          File file = new File("Users.dat"); 
          if (!file.exists()) { 
-            User user = new User(1, "Bela", "Student"); 
+            User user = new User(1, "zhino", "Student"); 
             userList = new ArrayList<User>(); 
             userList.add(user); 
-            User user1 = new User(2, "Zahraa", "Student"); 
+            User user1 = new User(2, "shnyar", "Student"); 
             userList.add(user1); 
-            User user2 = new User(3, "Lina", "Student"); 
+            User user2 = new User(3, "varin", "Student"); 
             userList.add(user2); 
-            User user3 = new User(4, "Hassan", "Student"); 
+            User user3 = new User(4, "tahir", "Student"); 
             userList.add(user3); 
-            User user4 = new User(5, "Chawan", "Student"); 
+            User user4 = new User(5, "faeq", "Student"); 
             userList.add(user4); 
             saveUserList(userList); 
          } 
