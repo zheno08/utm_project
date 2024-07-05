@@ -10,13 +10,13 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo Building...'
-                // Add your build steps here, e.g., `sh 'mvn clean install'`
+               sh 'mvn clean install'
             }
         }
         stage('Test') {
             steps {
                 sh 'echo Testing...'
-                // Add your test steps here, e.g., `sh 'mvn test'`
+             sh 'mvn test'
             }
         }
         stage('Deploy') {
