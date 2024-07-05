@@ -37,10 +37,7 @@ pipeline {
     }
 
     post {
-        always {
-            // Clean up actions, e.g., deleting temporary files
-       
-        }
+      
         success {
             echo 'Build succeeded!'
         }
