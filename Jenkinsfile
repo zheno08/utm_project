@@ -9,19 +9,19 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'echo Building...'
-               sh 'mvn clean install'
+                bat 'echo Building...'
+               bat 'mvn clean install'
             }
         }
         stage('Test') {
             steps {
-                sh 'echo Testing...'
-             sh 'mvn test'
+                bat 'echo Testing...'
+             bat 'mvn test'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'echo Deploying...'
+                bat 'echo Deploying...'
                 // Add your deploy steps here, e.g., `sh 'kubectl apply -f deployment.yaml'`
             }
         }
