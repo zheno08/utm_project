@@ -39,7 +39,7 @@ pipeline {
     post {
         always {
             // Clean up actions, e.g., deleting temporary files
-            cleanWs()
+       
         }
         success {
             echo 'Build succeeded!'
