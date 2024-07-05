@@ -4,8 +4,8 @@ pipeline {
     environment {
         JAVA_HOME = tool name: 'JDK 17', type: 'hudson.model.JDK'
         PATH = "${JAVA_HOME}/bin:${env.PATH}"
-       // JMETER_HOME = 'C:\Program Files\Git\usr\bin' // Adjust this to the actual path of your JMeter installation
-  echo '${PATH}'
+       JMETER_HOME = 'C:/\Program Files/\Git/\usr/\bin' // Adjust this to the actual path of your JMeter installation
+
     }
 
     stages {
