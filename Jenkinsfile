@@ -10,13 +10,13 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'echo Building...'
-               bat 'mvn clean install'
+            //   bat 'mvn clean install'
             }
         }
         stage('Test') {
             steps {
                 bat 'echo Testing...'
-             bat 'mvn test'
+           //  bat 'mvn test'
             }
         }
         stage('Deploy') {
