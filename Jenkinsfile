@@ -30,14 +30,18 @@ pipeline {
             post {
                 always {
                     // Publish JMeter results
-                    publishPerformanceReport parsers: [[$class: 'JMeterParser', glob: 'results.jtl']]
+               
+                      junit '**/results.jtl'
                 }
             }
         }
     }
 
     post {
-      
+       always {
+            // Clean up actions, e.g., deleting temporary files
+            cleanWs()
+        }
         success {
             echo 'Build succeeded!'
         }
