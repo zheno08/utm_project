@@ -1,42 +1,49 @@
 pipeline {
     agent any
 
+    environment {
+        JAVA_HOME = tool name: 'JDK 11', type: 'hudson.model.JDK'
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+        JMETER_HOME = 'C:\Program Files\Git\usr\bin' // Adjust this to the actual path of your JMeter installation
+    }
+
     stages {
         stage('Checkout') {
             steps {
+                // Checkout code from the version control system
                 checkout scm
             }
         }
         stage('Build') {
             steps {
-                bat 'echo Building...'
-            //   bat 'mvn clean install'
+                // Build your project (if needed)
+                sh 'mvn clean install'
             }
         }
-        stage('Test') {
+        stage('Performance Test') {
             steps {
-                bat 'echo Testing...'
-           //  bat 'mvn test'
+                // Run JMeter tests
+                sh "${JMETER_HOME}/bin/jmeter -n -t test-plan.jmx -l results.jtl -j jmeter.log"
             }
-        }
-        stage('Deploy') {
-            steps {
-                bat 'echo Deploying...'
-                // Add your deploy steps here, e.g., `sh 'kubectl apply -f deployment.yaml'`
+            post {
+                always {
+                    // Publish JMeter results
+                    publishPerformanceReport parsers: [[$class: 'JMeterParser', glob: 'results.jtl']]
+                }
             }
         }
     }
 
     post {
         always {
-            echo 'Cleaning up...'
-            // Add any cleanup steps here
+            // Clean up actions, e.g., deleting temporary files
+            cleanWs()
         }
         success {
-            echo 'Pipeline succeeded!'
+            echo 'Build succeeded!'
         }
         failure {
-            echo 'Pipeline failed!'
+            echo 'Build failed!'
         }
     }
 }
