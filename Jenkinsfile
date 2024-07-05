@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         JAVA_HOME = tool name: 'JDK 17', type: 'hudson.model.JDK'
-        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+        PATH = "C:/Program Files/Java/jdk-17/bin:${env.PATH}"
      
 
     }
